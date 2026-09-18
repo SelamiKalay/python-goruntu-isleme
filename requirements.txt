@@ -1,0 +1,8 @@
+opencv-python
+numpy
+mediapipe
+pygame
+requests
+face_recognition
+pyaudio
+moviepy

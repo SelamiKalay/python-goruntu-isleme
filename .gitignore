@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Model ve medya dosyaları (çalışma anında indirilir / kullanıcı ekler)
+*.task
+*.mp3
+*.wav
+*.mp4
+*.avi
+my_face*.jpg
+my_face*.png
+kayitlar/
