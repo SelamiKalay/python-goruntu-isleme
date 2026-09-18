@@ -8,6 +8,7 @@ küçük bilgisayarlı görü projeleri.
 | [`el-hareketi-muzik-kontrolu`](el-hareketi-muzik-kontrolu) | İki el aynı anda belirli bir işareti (başparmak + işaret + orta parmak açık) yaptığında müziği çalan, eller indirilince durduran oynatıcı | OpenCV, MediaPipe, pygame |
 | [`yuz-tanima-muzik-calar`](yuz-tanima-muzik-calar) | Kameraya tanımlı yüz geldiğinde müziği otomatik başlatan oynatıcı | face_recognition, OpenCV, pygame |
 | [`hareket-algilama`](hareket-algilama) | Arka plan çıkarma ile hareket algılama; Telegram'a fotoğraflı bildirim gönderen sürümü de var | OpenCV, NumPy, requests |
+| [`el-cercevesi-efektler`](el-cercevesi-efektler) | İki elin parmaklarıyla oluşturulan çerçevenin içine gerçek zamanlı görüntü efektleri (X-ray, karikatür, neon, glitch, gece görüşü ve daha fazlası); cımbız hareketiyle efekt değiştirme | OpenCV, MediaPipe, NumPy |
 | [`guvenlik-kamerasi`](guvenlik-kamerasi) | Hareket algılandığında sesli video kaydeden ve kaydı Telegram'a gönderen güvenlik kamerası | OpenCV, PyAudio, MoviePy |
 
 ## Kurulum

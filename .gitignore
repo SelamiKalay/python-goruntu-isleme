@@ -13,3 +13,6 @@ venv/
 my_face*.jpg
 my_face*.png
 kayitlar/
+
+# Ekran görüntüleri (yüz içerebilir)
+ekran_*.png

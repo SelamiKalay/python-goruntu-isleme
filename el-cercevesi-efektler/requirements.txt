@@ -1,0 +1,5 @@
+# mediapipe, opencv-contrib-python'u (cv2) kendisi getirir.
+# Ayrıca opencv-python kurmayın: ikisi aynı cv2 dosyalarını paylaşır ve çakışır.
+mediapipe==1.0.1
+opencv-contrib-python==5.0.0.93
+numpy==2.5.3
