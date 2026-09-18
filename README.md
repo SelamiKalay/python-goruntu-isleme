@@ -1,37 +1,42 @@
-# Python Görüntü İşleme Projeleri
+# Python Computer Vision Projects
 
-OpenCV, MediaPipe ve face_recognition kullanılarak geliştirilmiş, kamera tabanlı
-küçük bilgisayarlı görü projeleri.
+**English** | [Türkçe](README.tr.md)
 
-| Proje | Açıklama | Kütüphaneler |
+Small camera-based computer vision projects built with OpenCV, MediaPipe and
+face_recognition.
+
+| Project | Description | Libraries |
 |---|---|---|
-| [`el-hareketi-muzik-kontrolu`](el-hareketi-muzik-kontrolu) | İki el aynı anda belirli bir işareti (başparmak + işaret + orta parmak açık) yaptığında müziği çalan, eller indirilince durduran oynatıcı | OpenCV, MediaPipe, pygame |
-| [`yuz-tanima-muzik-calar`](yuz-tanima-muzik-calar) | Kameraya tanımlı yüz geldiğinde müziği otomatik başlatan oynatıcı | face_recognition, OpenCV, pygame |
-| [`hareket-algilama`](hareket-algilama) | Arka plan çıkarma ile hareket algılama; Telegram'a fotoğraflı bildirim gönderen sürümü de var | OpenCV, NumPy, requests |
-| [`el-cercevesi-efektler`](el-cercevesi-efektler) | İki elin parmaklarıyla oluşturulan çerçevenin içine gerçek zamanlı görüntü efektleri (X-ray, karikatür, neon, glitch, gece görüşü ve daha fazlası); cımbız hareketiyle efekt değiştirme | OpenCV, MediaPipe, NumPy |
-| [`guvenlik-kamerasi`](guvenlik-kamerasi) | Hareket algılandığında sesli video kaydeden ve kaydı Telegram'a gönderen güvenlik kamerası | OpenCV, PyAudio, MoviePy |
+| [`el-hareketi-muzik-kontrolu`](el-hareketi-muzik-kontrolu) | A player that starts the music when both hands make a specific gesture at the same time (thumb + index + middle finger extended) and stops it when the hands are lowered | OpenCV, MediaPipe, pygame |
+| [`yuz-tanima-muzik-calar`](yuz-tanima-muzik-calar) | A player that automatically starts the music when a known face appears in front of the camera | face_recognition, OpenCV, pygame |
+| [`hareket-algilama`](hareket-algilama) | Motion detection with background subtraction; includes a version that sends photo alerts to Telegram | OpenCV, NumPy, requests |
+| [`el-cercevesi-efektler`](el-cercevesi-efektler) | Real-time image effects (X-ray, cartoon, neon, glitch, night vision and more) inside a frame formed by the fingers of both hands; switch effects with a pinch gesture | OpenCV, MediaPipe, NumPy |
+| [`guvenlik-kamerasi`](guvenlik-kamerasi) | A security camera that records video with audio when motion is detected and sends the recording to Telegram | OpenCV, PyAudio, MoviePy |
 
-## Kurulum
+The README files inside the project folders are in Turkish.
+
+## Installation
 
 ```bash
 pip install -r requirements.txt
 ```
 
-> `face_recognition` kütüphanesi `dlib`'e bağımlıdır; Windows'ta kurulum için
-> CMake ve Visual C++ Build Tools gerekebilir.
+> The `face_recognition` library depends on `dlib`; on Windows, CMake and the
+> Visual C++ Build Tools may be required to install it.
 
-## Kullanım Notları
+## Usage Notes
 
-- **El hareketi müzik kontrolü:** MediaPipe el modeli ilk çalıştırmada otomatik
-  indirilir. Script ile aynı klasöre `music.mp3` adında bir müzik dosyası koyun.
-- **Yüz tanıma müzik çalar:** Script ile aynı klasöre referans yüz fotoğrafınızı
-  (`my_face.jpg`) ve çalınacak müziği (`song.mp3`) koyun.
-- **Telegram bildirimleri:** Bot bilgileri koda yazılmaz, ortam değişkenlerinden okunur:
+- **Hand gesture music control:** the MediaPipe hand model is downloaded
+  automatically on first run. Put a music file named `music.mp3` next to the script.
+- **Face recognition music player:** put your reference face photo (`my_face.jpg`)
+  and the music to play (`song.mp3`) next to the script.
+- **Telegram notifications:** bot credentials are not stored in the code; they are
+  read from environment variables:
 
   ```bash
-  set TELEGRAM_BOT_TOKEN=<BotFather'dan alınan token>
-  set TELEGRAM_CHAT_ID=<sohbet id>
+  set TELEGRAM_BOT_TOKEN=<token from BotFather>
+  set TELEGRAM_CHAT_ID=<chat id>
   ```
 
-  Sohbet ID'nizi öğrenmek için `guvenlik-kamerasi/get_telegram_id.py` scriptini
-  çalıştırıp botunuza mesaj gönderebilirsiniz.
+  To find your chat ID, run `guvenlik-kamerasi/get_telegram_id.py` and send a
+  message to your bot.
