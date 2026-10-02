@@ -68,7 +68,7 @@ class AudioRecorder:
             try:
                 data = self.stream.read(CHUNK)
                 self.frames.append(data)
-            except:
+            except Exception:
                 break
 
     def stop(self):
@@ -271,7 +271,7 @@ def main():
                     if out: out.release()
                     audio_recorder.stop()
                     
-                    print(f"[ALARM] Kayıt Bitti. İşleniyor...")
+                    print("[ALARM] Kayıt Bitti. İşleniyor...")
                     
                     # Arka planda birleştir ve gönder
                     t = threading.Thread(target=process_and_send, args=(temp_vid, temp_aud, final_mp4))

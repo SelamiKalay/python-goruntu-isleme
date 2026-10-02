@@ -6,7 +6,6 @@
 # ==============================================================================
 
 import cv2
-import numpy as np
 import requests
 from datetime import datetime
 import time
@@ -365,7 +364,7 @@ if __name__ == "__main__":
     print("Yapilandirma:")
     print(f"  - Hareket esik degeri: {HAREKET_ESIK_DEGERI} piksel")
     print(f"  - Cooldown suresi: {COOLDOWN_SURESI} saniye")
-    print(f"  - Telegram Bot: Aktif")
+    print("  - Telegram Bot: Aktif")
     print(f"  - Chat ID: {CHAT_ID}")
     print()
     print("-" * 60)

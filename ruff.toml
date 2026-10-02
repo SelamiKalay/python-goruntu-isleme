@@ -1,0 +1,3 @@
+[lint]
+# security_cam.py tek satirlik "if x: y" stilini bilincli kullaniyor
+ignore = ["E701"]

@@ -15,7 +15,7 @@ MODEL_PATH = "hand_landmarker.task"
 MODEL_URL = "https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task"
 
 if not os.path.exists(MODEL_PATH):
-    print(f"[INFO] Downloading hand landmarker model...")
+    print("[INFO] Downloading hand landmarker model...")
     urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
     print(f"[INFO] Model downloaded: {MODEL_PATH}")
 
@@ -138,7 +138,7 @@ while cap.isOpened():
             try:
                 pygame.mixer.music.play()
                 is_playing = True
-            except:
+            except Exception:
                 pass
     else:
         if is_playing:

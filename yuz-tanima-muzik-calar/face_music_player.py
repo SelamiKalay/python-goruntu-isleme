@@ -27,7 +27,6 @@
 import cv2
 import face_recognition
 import pygame
-import numpy as np
 import os
 import time
 
@@ -179,9 +178,9 @@ def load_reference_faces():
             if len(encodings) > 0:
                 known_encodings.append(encodings[0])
                 count += 1
-                print(f"      -> Başarılı.")
+                print("      -> Başarılı.")
             else:
-                print(f"      -> [UYARI] Yüz algılanamadı, atlanıyor.")
+                print("      -> [UYARI] Yüz algılanamadı, atlanıyor.")
                 
         except Exception as e:
             print(f"      -> [HATA] {e}")
@@ -236,7 +235,7 @@ def stop_music():
     try:
         pygame.mixer.music.stop()
         print("[INFO] Müzik durduruldu.")
-    except:
+    except Exception:
         pass
 
 

@@ -6,10 +6,12 @@
 # ==============================================================================
 
 import cv2
-import numpy as np
 from datetime import datetime
 import os
-import winsound  # Windows için sistem sesi
+try:
+    import winsound  # Windows için sistem sesi
+except ImportError:  # Linux/macOS: winsound yok, terminal zili kullanılır
+    winsound = None
 
 # ==============================================================================
 # YAPILANDIRMA AYARLARI
@@ -75,11 +77,14 @@ def fotograf_kaydet(frame):
 def alarm_sesi_cal():
     """
     Hareket algılandığında sistem sesi çalar.
-    Windows'ta winsound kütüphanesi kullanılır.
+    Windows'ta winsound, diğer sistemlerde terminal zili kullanılır.
     """
     if SES_CALISTIR:
         try:
-            winsound.Beep(SES_FREKANSI, SES_SURESI)
+            if winsound is not None:
+                winsound.Beep(SES_FREKANSI, SES_SURESI)
+            else:
+                print("\a", end="", flush=True)
         except Exception as e:
             print(f"[UYARI] Ses çalınamadı: {e}")
 

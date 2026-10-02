@@ -1,0 +1,54 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: ruff + sozdizimi
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: pip install ruff
+      - name: ruff
+        run: ruff check --output-format github .
+      - name: Sozdizimi (py_compile)
+        run: python -m py_compile $(git ls-files '*.py')
+
+  imports:
+    name: import kontrolu (${{ matrix.name }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: kok requirements.txt
+            python: "3.11"
+            requirements: requirements.txt
+            files: "*.py"
+          - name: el-cercevesi-efektler
+            python: "3.14"
+            requirements: el-cercevesi-efektler/requirements.txt
+            files: "el-cercevesi-efektler/*.py"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: ${{ matrix.requirements }}
+      - name: Sistem paketleri (pyaudio, dlib, OpenCV)
+        if: matrix.requirements == 'requirements.txt'
+        run: sudo apt-get update -q && sudo apt-get install -y -q portaudio19-dev cmake libgl1
+      - name: Bagimliliklar
+        run: pip install -r ${{ matrix.requirements }}
+      - name: Import ve modul ozniteligi kontrolu
+        env:
+          PYGAME_HIDE_SUPPORT_PROMPT: "1"
+        run: python .github/scripts/check_imports.py $(git ls-files '${{ matrix.files }}')
