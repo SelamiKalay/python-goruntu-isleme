@@ -80,12 +80,11 @@ class AudioRecorder:
             self.stream.close()
         
         if self.filename and self.frames:
-            wf = wave.open(self.filename, 'wb')
-            wf.setnchannels(CHANNELS)
-            wf.setsampwidth(self.audio.get_sample_size(FORMAT))
-            wf.setframerate(RATE)
-            wf.writeframes(b''.join(self.frames))
-            wf.close()
+            with wave.open(self.filename, 'wb') as wf:
+                wf.setnchannels(CHANNELS)
+                wf.setsampwidth(self.audio.get_sample_size(FORMAT))
+                wf.setframerate(RATE)
+                wf.writeframes(b''.join(self.frames))
             print("[SES] Dosya Kaydedildi.")
 
     def terminate(self):

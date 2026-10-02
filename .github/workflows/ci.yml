@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
-      - run: pip install ruff
+      - run: pip install ruff==0.16.10
       - name: ruff
         run: ruff check --output-format github .
       - name: Sozdizimi (py_compile)
